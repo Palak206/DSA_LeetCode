@@ -45,7 +45,7 @@ class Solution{
     public:
     int splitArray(vector<int>& nums, int k) {
         int low = *max_element(nums.begin(),nums.end()); // 8
-        int high = accumulate(nums.begin(),nums.end(),0); // 23
+        int high = accumulate(nums.begin(),nums.end(),0); // 23 sum of all the array element
         int ans = low;
         while(low<=high)
         {
