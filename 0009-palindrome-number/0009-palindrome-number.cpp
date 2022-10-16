@@ -25,25 +25,25 @@
 
 // Convert the number to a string, revert it and compare.
 
-class Solution {
-public:
-    bool isPalindrome(int x) {
-        string rev = to_string(x);
-        reverse(rev.begin(), rev.end());
-        return to_string(x) == rev;
-    }
-};
+// class Solution {
+// public:
+//     bool isPalindrome(int x) {
+//         string rev = to_string(x);
+//         reverse(rev.begin(), rev.end());
+//         return to_string(x) == rev;
+//     }
+// };
 
 
 
 // Convert the number to a string, then use two pointers at beginning and end to check if it's a palindrome.
 
-// class Solution {
-// public:
-//     bool isPalindrome(int x) {
-//         string s = to_string(x);
-//         int i = 0, j = s.size()-1;
-//         while (i <= j) if (s[i++] != s[j--]) return false;
-//         return true;
-//     }
-// };
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        string s = to_string(x);
+        int i = 0, j = s.size()-1;
+        while (i <= j) if (s[i++] != s[j--]) return false;
+        return true;
+    }
+};
