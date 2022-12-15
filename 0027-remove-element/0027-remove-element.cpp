@@ -2,6 +2,7 @@ class Solution {
 public:
     int removeElement(vector<int>& nums, int val) {
         stack<int>s;
+        sort(nums.begin() , nums.end());
         for(int i=0;i<nums.size();i++){
             if(nums[i]!=val){
                 s.push(nums[i]);
@@ -14,7 +15,7 @@ public:
             num.push_back(s.top());
             s.pop();
         }
-        reverse(num.begin(),num.end());
+        // reverse(num.begin(),num.end());
         nums=num;
         return count;
         
