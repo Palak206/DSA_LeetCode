@@ -4,11 +4,24 @@ public:
         int count = 0 ;
         int row = strs.size();
         int col = strs[0].size();
-        for(int j = 0 ; j<col ; j++){
+//         for(int j = 0 ; j<col ; j++){
             
-          for(int i = 0 ; i<row-1 ; i++){
+//           for(int i = 0 ; i<row-1 ; i++){
            
-               if(strs[i][j] > strs[i+1][j]){
+//                if(strs[i][j] > strs[i+1][j]){
+//                    count++;
+//                break;
+//                }
+//            }
+
+//         }
+        
+        
+        for(int i = 0 ; i<col ; i++){
+            
+          for(int j = 1 ; j<row ; j++){
+           
+               if(strs[j-1][i] > strs[j][i]){
                    count++;
                break;
                }
