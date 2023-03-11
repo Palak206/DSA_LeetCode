@@ -43,3 +43,32 @@ public:
         return NULL;
     }
 };
+
+// class Solution {
+// public:
+//     TreeNode* buildBST(ListNode* head) {
+//         if(!head) return nullptr;
+
+//         ListNode *slow = head, *fast = head, *prev = nullptr;
+ 
+//         while(fast && fast->next) {
+//             prev = slow;
+//             slow = slow->next;
+//             fast = fast->next->next;
+//         }
+
+//         if(prev) prev -> next = nullptr;
+//         if(slow == head) head = nullptr;
+
+//         TreeNode* node = new TreeNode(slow->val);
+
+//         node -> left = buildBST(head);
+//         node -> right = buildBST(slow->next);
+
+//         return node;
+//     }
+
+//     TreeNode* sortedListToBST(ListNode* head) {
+//         return buildBST(head);
+//     }
+// };
