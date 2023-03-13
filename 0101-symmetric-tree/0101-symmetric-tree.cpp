@@ -9,6 +9,7 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+// T.C & S.C = O(N)
 class Solution {
 public:
     bool isSymmetric(TreeNode* root) {
