@@ -38,9 +38,11 @@ public:
         int curr_level = 0;
         while(!queue.empty()) { /*Second BFS to go upto K level from target node and using our hashtable info*/
             int size = queue.size();
-            if(curr_level++ == k) break;
+            if(curr_level == k) break;
+            curr_level++;
             for(int i=0; i<size; i++) {
-                TreeNode* current = queue.front(); queue.pop();
+                TreeNode* current = queue.front();
+                queue.pop();
                 if(current->left && !visited[current->left]) {
                     queue.push(current->left);
                     visited[current->left] = true;
