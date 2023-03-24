@@ -1,3 +1,4 @@
+// T.C = O(LOGN) S.C = O(1)
 class Solution {
 public:
     int hammingWeight(uint32_t n) {
