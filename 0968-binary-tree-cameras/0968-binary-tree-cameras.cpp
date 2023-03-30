@@ -107,11 +107,12 @@
 //    }
 // };
 
+// T.C = O(N) S.C = O(1)
 class Solution{
-    int cam;
+    int cam = 0;
     public:
           int minCameraCover(TreeNode* root) {
-              cam = 0;
+              
              int ans = dfs(root);
               //  if 0 (uncovered) then cam+1
               //if (1 ,2) node covered then return the no. of camera that have added in the tree
