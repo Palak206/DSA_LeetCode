@@ -10,7 +10,8 @@ public:
                 //keep remving no. from back sight
                 //unless problem is solved
                 // bcoz we need ALL PAIR SHOULD BE 0
-                used ^= nums[j++]; // we remove 1 in bitset using xor 1 ^1 =0
+                used ^= nums[j]; // we remove 1 in bitset using xor 1 ^1 =0
+                j++;
             }
             //if & will be 0 then just add in subarray
             used |= nums[i]; //setting bits inside num with our current element
