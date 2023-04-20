@@ -27,7 +27,7 @@
 //       / \  / \  /\   / \
 //      6  n  n  n n n 7   n = 8
 
-
+// T.C & S.C = O(N)
 class Solution {
 public:
     
