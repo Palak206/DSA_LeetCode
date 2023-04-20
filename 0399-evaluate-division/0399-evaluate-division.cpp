@@ -81,8 +81,8 @@ public:
    {
        mp[e[i][0]].push_back({e[i][1],v[i]});
        mp[e[i][1]].push_back({e[i][0],1.0/v[i]});
-       s.insert(e[i][0]);
-       s.insert(e[i][1]);
+       s.insert(e[i][0]); //source
+       s.insert(e[i][1]); //destination
 
    }    
     for(int i=0;i<q.size();i++)
@@ -90,6 +90,7 @@ public:
         double ans=-1.0,temp=1;
       unordered_map<string,int>vis;
       if((s.find(q[i][0])!=s.end()) || (s.find(q[i][1])!=s.end()))
+          //means [x,x] source node x is not present any where so don't call dfs
         dfs(q[i][0],q[i][1],ans,vis,temp);
         res.push_back(ans);
     }
