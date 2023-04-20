@@ -10,11 +10,11 @@
  * };
  */
 // width = no. od node between any two node
-//               1
+//               1      index = 0
 //            /    \
-//           3      2
+//           3      2    i = 1
 //          / \       \
-//          5  3       9
+//          5  3       9   i = 2
 //         1  1   1   1 = 4
          // (5 , 3 null ,9)
 
@@ -36,13 +36,14 @@ public:
             return 0;
         int ans = 0;
         queue<pair<TreeNode* , int>> q;
-        q.push({root , 0});  // {1,0}
+        q.push({root , 0});  // {1,0(index = 0)}
         while(!q.empty()){
             int size = q.size();
             int min = q.front().second;
             int first = 0 ,last = 0;
             
             for(int i = 0 ; i<size ; i++){
+                // when we do a tree traversal and input is given as an array so we acces left & right node using (2*i+1 = left),(2*i+2 = right)
                 int curr_node = q.front().second - min;  //  (2*0+1) = 1, 1-1=0 ,
                 // 
                 TreeNode* node = q.front().first;
@@ -52,7 +53,7 @@ public:
                 if(i == size-1)
                     last = curr_node;
                 
-                if(node->left)
+                if(node->left != NULL)
                     q.push({node->left , (long long)2*curr_node+1});  //{3  2*0+1}
                 if(node->right)
                     q.push({node->right , (long long)2*curr_node+2});  //{2 , 2*0+2}
