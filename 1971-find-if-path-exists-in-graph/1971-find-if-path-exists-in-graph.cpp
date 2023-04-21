@@ -22,10 +22,10 @@ public:
         while(!q.empty()){
             int node=q.front();
             q.pop();
-            for(auto it:adj[node]){
-                if(!vis[it]){
-                    vis[it]=1;
-                    q.push(it);
+            for(auto neighbour:adj[node]){
+                if(!vis[neighbour]){
+                    vis[neighbour]=1;
+                    q.push(neighbour);
                 }
                 // if(destination==it){
                 //     return true;
@@ -35,7 +35,8 @@ public:
 
 
         }
-         if(vis[source]==1 && vis[destination]==1) return true;
+        if(vis[source]==1 && vis[destination]==1) 
+             return true;
         return false;
 
     }
