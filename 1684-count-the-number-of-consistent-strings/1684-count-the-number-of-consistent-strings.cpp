@@ -1,0 +1,28 @@
+// 
+
+class Solution {
+public:
+    int countConsistentStrings(string allowed, vector<string>& words) {
+        unordered_set<char> s;
+        for(auto x: allowed)
+            s.insert(x);
+        
+        int count = 0;
+        for(auto word: words){
+            
+            bool status = true;
+            for(int i=0; i<word.size(); i++){
+                if(s.find(word[i]) == s.end()){
+                    status = false;
+                    //means words= 'bd' al = {a,b} so words[i]= b !=a so false
+                    break;
+                }
+            }
+            if(status)
+                count++;
+        }
+        
+        return count;
+    }
+};
+
