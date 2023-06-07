@@ -17,6 +17,14 @@
 // next_permutation(nums.begin() , nums.end());
 //          return nums;
 
+
+
+// optimize 1 3 5 4 2 = 1 4 2 3 5
+//  a[i] < a[i+1] from back index ind1 = 1
+// a[ind2] > a[ind1] inde2 = 3
+// swap(a[ind1] , a[ind2]) 1 4 5 3 2
+
+
 class Solution {
 public:
     void nextPermutation(vector<int>& nums) {
