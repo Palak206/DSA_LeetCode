@@ -26,7 +26,7 @@ public:
                return present_cycle[node]  = true;
           }
         }
-        //now we have to mark those visited node to unvisited
+        //n0ow we have to mark those visited node to unvisited
         dfsVisited[node] = false;
          return false;
     }
