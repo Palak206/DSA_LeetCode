@@ -1,3 +1,6 @@
+// so the question is saying before taking course bi we have to take course ai
+//  ai -> bi so this is a directed graph there is a loop(deadlock ,cycle)
+//so we  use topological sort if there is a cycle then it's false
 class Solution {
 public:
     bool topoSort(int s,vector<bool> &visited,vector<bool> &curr_visited, vector<int>adjList[] ){
