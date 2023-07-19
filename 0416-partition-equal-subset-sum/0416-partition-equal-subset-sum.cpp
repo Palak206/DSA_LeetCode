@@ -60,25 +60,40 @@ class Solution {
     }
     
     //BOTTOM-UP 0->total/2 n->0
+//     T.C = O(SUM*N)
     bool solveTab(vector<int>& nums , int total){
         vector<vector<int>> dp(nums.size()+1, vector<int>(total+1, 0));
         
-        for(int i=0 ; i<=nums.size() ; i++){
+        vector<int> curr(total/2+1 , 0);
+        vector<int> next(total/2+1 , 0);
+        
+        curr[0] = 1;
+        next[0] = 1;
+        
+        for(int i=0 ;i<=nums.size() ; i++){
             dp[i][0] = 1;
         }
         
         for(int index = nums.size()-1  ; index >=0 ; index--){
             for(int target = 0 ; target <= total/2; target++){
                   bool incl = 0;
-                if(target - nums[index] >= 0)
-                   incl = dp[index+1][target - nums[index]];
-                //11-1= 10
-                 bool excl = dp[index+1][target - 0];//11-0
+                  // if(target - nums[index] >= 0)
+                  //     incl = dp[index+1][target - nums[index]];
+                     //11-1= 10
+                
+                  // bool excl = dp[index+1][target - 0];//11-0
         
-                  dp[index][target] = incl or excl;;
+                  // dp[index][target] = incl or excl;;
+                  if(target - nums[index] >= 0)
+                      incl = next[target - nums[index]];
+                
+                  bool excl = next[target - 0];
+                  
+                  curr[target] = incl || excl;
             }
+            next = curr;
         }
-        return dp[0][total/2];
+        return next[total/2];
     }
     
     bool canPartition(vector<int>& nums){
