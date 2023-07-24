@@ -1,7 +1,5 @@
 // Time Complexity : O(logN).
-// Space Complexity : O(logN), Recursion stack space.
-
-
+// Space Complexity : O(logN), Recursion stack space
 class Solution {
 public:
     double myPow(double x, int n) {
@@ -15,7 +13,20 @@ public:
             return myPow(x*x, n/2); // (4,5)
         }
         else{
-            return x*myPow(x, n-1); //4*(4,5-1) 4*(4^4) = 1024
+            return x*myPow(x, n-1); //2.1*(2.1,3-1) 2.1*(2.1^2) = 9.261
         }
     }
 };
+
+
+
+// class Solution{
+//     public:
+//     double myPow(double x, int n) {
+//       double ans = 1.0;
+//       for (int i = 0; i < n; i++) {
+//         ans = ans * x;
+//       }
+//       return ans;
+//    }
+// };
