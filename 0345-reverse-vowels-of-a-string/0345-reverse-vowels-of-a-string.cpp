@@ -2,8 +2,9 @@ class Solution {
 public:
     bool isVowel(char ch){
         // ch = tolower(ch);
-        // return (ch =='a' || ch =='e' || ch == 'i' || ch =='o' || ch =='u' ) ;
-        return (ch=='a' || ch=='A' || ch=='e' || ch=='E' || ch=='i'|| ch=='I'|| ch=='o'|| ch=='O' || ch=='u'|| ch=='U');
+        return (ch =='a' || ch =='e' || ch == 'i' || ch =='o' || ch =='u'
+        || ch =='A' || ch =='E' || ch == 'I' || ch =='O' || ch =='U') ;
+        // return (ch=='a' || ch=='A' || ch=='e' || ch=='E' || ch=='i'|| ch=='I'|| ch=='o'|| ch=='O' || ch=='u'|| ch=='U');
     }
     string reverseVowels(string s) {
         int n = s.size();
