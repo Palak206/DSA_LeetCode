@@ -29,9 +29,9 @@ public:
         int i=0;
         int e=0, od = 0;
         
-        while(n){
-            if(n%2){
-                if(i%2) od++;
+        while(n != 0){
+            if(n%2 != 0){
+                if(i%2 != 0) od++;
                 else
                     e++;
             }
