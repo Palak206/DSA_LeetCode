@@ -22,7 +22,7 @@ public:
         return;
     }
     void Reverse(stack<int> &s){
-        if(s.size() == 0){
+        if(s.size() == 1){
             return;
         }
         int temp = s.top();
