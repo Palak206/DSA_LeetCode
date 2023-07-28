@@ -3,15 +3,17 @@
 //       (i+1 , j)p2 -> i+1+1 , (i+2 , j) p1
 //     /           \           (i+1 , j-1) p2
 // p1(i-j)
-//     \  (i , j-1)p2 -- (i+1 , j-1)
-//                 \     (i , j-2)
+//     \  (i , j-1)p2 -i- (i+1 , j-1)
+//              j-1  \     (i , j-2)
             //        i      j
             //       [1, 5 , 2]= 8
             //   2+1 /         \2+1 = 3
             // 2 (5, 2)        (1 , 5) 1
 
+// we have 2 choices we can use memoriazation t.c = O(2^N)
 class Solution {
 public:
+    int t[23][23];
     int solve(int i , int j, vector<int>& nums ){
         
         if(i>j)
@@ -20,6 +22,9 @@ public:
         if(i == j){
             return nums[i];
         }
+        
+        if(t[i][j] != -1)
+            return t[i][j];
         
         int take_i = nums[i] + min(solve(i+2, j, nums), solve(i+1,j-1,nums));
         //worst expect
@@ -30,6 +35,7 @@ public:
         
     }
     bool PredictTheWinner(vector<int>& nums) {
+        memset(t , -1 , sizeof(t));
         int n= nums.size();
         
         int total_score = 0;
