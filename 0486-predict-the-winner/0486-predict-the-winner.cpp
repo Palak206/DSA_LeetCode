@@ -31,7 +31,7 @@ public:
         int take_j = nums[j] + min(solve(i, j-2, nums), solve(i+1,j-1,nums));
         
         //we have to return best so consider player 1
-        return max(take_i, take_j);
+        return t[i][j] =  max(take_i, take_j);
         
     }
     bool PredictTheWinner(vector<int>& nums) {
