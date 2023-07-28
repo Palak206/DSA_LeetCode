@@ -8,7 +8,7 @@ public:
         for( int i=0 ; i<n ; i++)
         {
               currentsum = currentsum+nums[i];
-              if(currentsum >= maxsum)
+              if(currentsum > maxsum)
                {
                   maxsum = currentsum;
                }
