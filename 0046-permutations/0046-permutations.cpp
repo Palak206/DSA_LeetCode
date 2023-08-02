@@ -1,55 +1,58 @@
+
 // class Solution {
 // public:
-//     vector<vector<int>> perm(vector<int>& nums){
-        
-//         if(nums.size() == 0){
-//             return {{}};
+//     vector<vector<int>> ans;
+//     void perm(vector<int>& nums , int i ){// pass reference it'll create copy of no.
+//         if(i == nums.size()){
+//             ans.push_back(nums);
+//             return ;
 //         }
-        
-    
-//         vector<vector<int>> ans;
-//         // each number 1 , 2 , 3
-//         for(int i= 0; i<nums.size(); i++){
-            
-//             vector<int> nums2;
-            
-//             for(int j= 0; j<nums.size(); j++){
-//                 if(i != j){
-//                     nums2.push_back(nums[j]);//except ith element
-//                 }
-//             }
-//             vector<vector<int>> v=perm(nums2); // 1,perm(2,3)
-//             for(auto a:v){
-//                 a.push_back(nums[i]);
-//                 ans.push_back(a);
-//             }
-            
+//         for(int j= i; j<nums.size();j++){
+//             swap(nums[i],nums[j]); //1,2( 2,1)
+//             perm(nums , i+1);
+//             swap(nums[i] ,nums[j]);//undo the chage
 //         }
-//         return ans;
 //     }
 //     vector<vector<int>> permute(vector<int>& nums) {
-//         return perm(nums);
+      
+//         perm(nums , 0);
+//         return ans;
 //     }
 // };
 
 
 class Solution {
 public:
-    vector<vector<int>> ans;
-    void perm(vector<int>& nums , int i ){// pass reference it'll create copy of no.
-        if(i == nums.size()){
-            ans.push_back(nums);
-            return ;
+    // int n;
+    vector<vector<int>> res;
+    unordered_set<int>st;//s.c = o(1)
+    
+    void solve(vector<int>&nums , vector<int>&temp){
+        if(temp.size() == nums.size()){
+             res.push_back(temp);
+             return;
         }
-        for(int j= i; j<nums.size();j++){
-            swap(nums[i],nums[j]);
-            perm(nums , i+1);
-            swap(nums[i] ,nums[j]);//undo the chage
+        for(int i=0 ; i<nums.size(); i++){
+            if(st.find(nums[i]) == st.end()){
+                temp.push_back(nums[i]);
+                st.insert(nums[i]);
+                
+                solve(nums , temp);//if element is  present
+                
+                temp.pop_back();//to ignore the ith ele
+                st.erase(nums[i]);
+                // solve(nums , temp );//if element is not present
+            }
+            
         }
+        
     }
-    vector<vector<int>> permute(vector<int>& nums) {
-      
-        perm(nums , 0);
-        return ans;
+    vector<vector<int>> permute(vector<int>& nums){
+        // vector<vector<int>> res;
+        vector<int>temp;
+        
+        
+        solve(nums , temp );
+        return res;
     }
 };
