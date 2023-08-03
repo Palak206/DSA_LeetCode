@@ -1,8 +1,9 @@
+// t.c = O(3^n)// as most of the letter has 3 choices
 class Solution {
 public:
     void help(int i , string& digits, string &temp,vector<string> &ans,unordered_map<char,string> &m){
         //pass by reference bcoz we don't create any copy
-        
+        // temp for strore the current word
         if(i == digits.size()){
             ans.push_back(temp);
             return;
@@ -10,9 +11,12 @@ public:
         
         string str = m[digits[i]]; //abc
         for(int j = 0 ; j<str.size() ; j++){
-            temp.push_back(str[j]);
-            help(i+1 ,digits,temp,ans,m);
-            temp.pop_back();
+            temp.push_back(str[j]); // a
+            help(i+1 ,digits,temp,ans,m); //d (ad) = size of digits so push in temp
+            temp.pop_back();//backtrack d remove
+            // after reaching to af then we don't have other option to take 
+            // so backtrack again abc =  for b now we explore bd,be,bf
+            // same as for c = cd,ce,cf
         }
         
         
