@@ -30,11 +30,11 @@ public:
          int res = 0;
         
         for(int i = 0 ; i<n ; i++){
-             int temp = -1;
+             int temp = nums[i];
             for(int j = i ; j<n ; j++){
-                if(temp == -1) temp = nums[j];
-                else
-                   temp = lcm(temp , nums[j]);
+                // if(temp == -1) temp = nums[j];
+                // else
+                temp = lcm(temp , nums[j]);
                 if(temp == k)
                     res++;
                 if(temp > k)
