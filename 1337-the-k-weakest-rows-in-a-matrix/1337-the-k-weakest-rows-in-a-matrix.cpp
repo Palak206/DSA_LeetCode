@@ -1,3 +1,59 @@
+// using Priority queue
+//TC = O(MLOGN)+O(MLOGK)+O(K)
+class Solution{
+ public:
+     typedef pair<int,int>P;
+    
+      int binarySearch(vector<int>& arr, int l , int r){
+          int res = -1;
+          int mid;
+          
+          while(l<=r){
+              mid = l+(r-l)/2;
+              
+              if(arr[mid] == 1){
+                  res = mid;
+                  l = mid+1; //if mid point se age bhi 1 h so l= mid+1
+              }
+              
+              else{
+                  r = mid-1;//right
+              }
+          }
+          return res+1;//+1 bcoz we have to sent count of one
+      }
+    
+      vector<int> kWeakestRows(vector<vector<int>>& mat, int k) {
+          int m = mat.size();//rows
+          int n = mat[0].size(); //col
+          
+          priority_queue<P> pq;//max-heap
+          
+          //O(m*log(n)) + O(m*log(k))
+          for(int row = 0; row<m; row++){
+              int num_of_ones = binarySearch(mat[row] , 0 , n-1);
+              
+              pq.push({num_of_ones , row});
+              
+              if(pq.size() > k)
+                  pq.pop();
+          }
+          
+          vector<int> res(k);
+          int j= k-1;//bcoz when we pop from the pq big element left first
+          while(!pq.empty()){
+              P temp = pq.top();
+              pq.pop();
+              
+              res[j] = temp.second;
+              j--;
+          }
+          return res;
+      }
+};
+
+
+
 // class Solution {
 // public:
     
@@ -74,46 +130,47 @@
 // };
 
 //without count func using binary search bcoz decendent order h que 1 1 0 0 0
-class Solution{
- public:
-     typedef pair<int,int>P;
+//O(mlogn)+O(mlogm)+O(k) = t.c , s.c = O(m)
+// class Solution{
+//  public:
+//      typedef pair<int,int>P;
     
-      int binarySearch(vector<int>& arr, int l , int r){
-          int res = -1;
-          int mid;
+//       int binarySearch(vector<int>& arr, int l , int r){
+//           int res = -1;
+//           int mid;
           
-          while(l<=r){
-              mid = l+(r-l)/2;
+//           while(l<=r){
+//               mid = l+(r-l)/2;
               
-              if(arr[mid] == 1){
-                  res = mid;
-                  l = mid+1; //if mid point se age bhi 1 h so l= mid+1
-              }
+//               if(arr[mid] == 1){
+//                   res = mid;
+//                   l = mid+1; //if mid point se age bhi 1 h so l= mid+1
+//               }
               
-              else{
-                  r = mid-1;//right
-              }
-          }
-          return res+1;//+1 bcoz we have to sent count of one
-      }
+//               else{
+//                   r = mid-1;//right
+//               }
+//           }
+//           return res+1;//+1 bcoz we have to sent count of one
+//       }
     
-      vector<int> kWeakestRows(vector<vector<int>>& mat, int k) {
-          int m = mat.size();//rows
-          int n = mat[0].size(); //col
+//       vector<int> kWeakestRows(vector<vector<int>>& mat, int k) {
+//           int m = mat.size();//rows
+//           int n = mat[0].size(); //col
           
-          vector<P> countOnes;//{1's count , row}
+//           vector<P> countOnes;//{1's count , row}
           
-          for(int row = 0; row<m; row++){
-              int num_of_ones = binarySearch(mat[row] , 0 , n-1);
+//           for(int row = 0; row<m; row++){
+//               int num_of_ones = binarySearch(mat[row] , 0 , n-1);
               
-              countOnes.push_back({num_of_ones , row});
-          }
-          sort(countOnes.begin() , countOnes.end());
+//               countOnes.push_back({num_of_ones , row});
+//           }
+//           sort(countOnes.begin() , countOnes.end());
           
-          vector<int> res(k);
-          for(int i=0 ; i<k ; i++){
-              res[i] = countOnes[i].second;
-          }
-          return res;
-      }
-};
+//           vector<int> res(k);
+//           for(int i=0 ; i<k ; i++){
+//               res[i] = countOnes[i].second;
+//           }
+//           return res;
+//       }
+// };
