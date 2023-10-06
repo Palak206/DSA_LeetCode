@@ -40,7 +40,7 @@ public:
             return t[n]; // alredy solved tree diagram stored 3 already(1,2)
         int res = INT_MIN;
         
-        for(int i=1 ; i<=n-1 ; i++){
+        for(int i=1 ; i<n ; i++){
            int prod = i * max(n-i , solve(n-i));
            res = max(res , prod);
         }
