@@ -22,44 +22,20 @@
 
 //auto -return type 
 //[] = capture clause
-// class Solution {
-// public:
-    
-//     //log2(num)
-//     int countOneBits(int n){
-//         int count = 0;
-        
-//         while(num != 0){
-//             count += (nums & 1);
-//             num >= 1;//right shift
-//         }
-//         return count;
-//     }
-    
-//     vector<int> sortByBits(vector<int>& arr) {
-        
-//         //if we want to excess countOneBits(tht is outside)
-//         // for that we have to use capture clause
-        
-//         auto lamda = [&](int &a  , int &b);{
-//             int count_a = countOneBits(a);
-//             int count_b = countOneBits(b);
-            
-//             if(count_a == count_b){
-//                 return a<b;//ascending
-//             }
-//             //if not 
-//             return count_a < count_b;
-//         };
-        
-//         sort(arr.begin() , arr.end() , lamda);
-//     }
-// };
 
-
-//T.C = O(1)*O(NLOGN)
 class Solution {
 public:
+    
+    //log2(num)
+    int countOneBits(int num){
+        int count = 0;
+        
+        while(num != 0){
+            count += (num & 1);
+            num >>= 1;//right shift
+        }
+        return count;
+    }
     
     vector<int> sortByBits(vector<int>& arr) {
         
@@ -67,8 +43,8 @@ public:
         // for that we have to use capture clause
         
         auto lamda = [&](int &a  , int &b){
-            int count_a = __builtin_popcount(a);
-            int count_b = __builtin_popcount(b);
+            int count_a = countOneBits(a);
+            int count_b = countOneBits(b);
             
             if(count_a == count_b){
                 return a<b;//ascending
@@ -81,3 +57,29 @@ public:
         return arr;
     }
 };
+
+
+//T.C = O(1)*O(NLOGN)
+// class Solution {
+// public:
+    
+//     vector<int> sortByBits(vector<int>& arr) {
+        
+//         //if we want to excess countOneBits(tht is outside)
+//         // for that we have to use capture clause
+        
+//         auto lamda = [&](int &a  , int &b){
+//             int count_a = __builtin_popcount(a);
+//             int count_b = __builtin_popcount(b);
+            
+//             if(count_a == count_b){
+//                 return a<b;//ascending
+//             }
+//             //if not 
+//             return count_a < count_b;
+//         };
+        
+//         sort(arr.begin() , arr.end() , lamda);
+//         return arr;
+//     }
+// };
