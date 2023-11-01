@@ -15,6 +15,45 @@
 //1st approach use hashmap to count the freq of element
 //if greater thn 1 then we stored in our ans
 //T.C & S.C = O(N)
+class Solution {
+public:
+    
+    vector<int>res;
+    unordered_map<int,int>mp;
+        
+        
+    //inorder trverasal
+    void dfs(TreeNode* root){
+        if(root == NULL)
+            return;
+        
+        dfs(root->left);
+        mp[root->val]++;
+        dfs(root->right);
+    }
+    
+    vector<int> findMode(TreeNode* root) {
+        dfs(root);
+        
+        int maxFreq = 0;
+        
+        //find the maxfreq in the map
+        for(auto &m:mp){
+            maxFreq = max(maxFreq , m.second);
+        }
+        
+        //if the freq == maxfreq ; 2 = 2
+        for(auto &m:mp){
+            if( m.second == maxFreq ){
+                res.push_back(m.first);
+            }
+        }
+        
+        return res;
+    }
+};
+
+
 // class Solution {
 // public:
 //     unordered_map<int,int>mp;
@@ -52,45 +91,45 @@
 // };
 
 
-class Solution {
-public:
-    int currNum = 0;
-    int currFreq = 0;
-    int maxFreq = 0;
-    vector<int>ans;
+// class Solution {
+// public:
+//     int currNum = 0;
+//     int currFreq = 0;
+//     int maxFreq = 0;
+//     vector<int>ans;
     
-    //inorder trverasal
-    void dfs(TreeNode* root){
-        if(root == NULL)
-            return;
+//     //inorder trverasal
+//     void dfs(TreeNode* root){
+//         if(root == NULL)
+//             return;
         
-        dfs(root->left);
+//         dfs(root->left);
         
-        if(root->val == currNum){
-            currFreq++;
-        }
-        else{
-            currNum = root->val;
-            currFreq = 1;
-            //bcoz we got new ele
-        }
+//         if(root->val == currNum){
+//             currFreq++;
+//         }
+//         else{
+//             currNum = root->val;
+//             currFreq = 1;
+//             //bcoz we got new ele
+//         }
         
-        //if currfreq > mxfreq then update the maxfreq in the ans
-        if(currFreq > maxFreq){
-            ans = {};
-            maxFreq = currFreq;
-        }
+//         //if currfreq > mxfreq then update the maxfreq in the ans
+//         if(currFreq > maxFreq){
+//             ans = {};
+//             maxFreq = currFreq;
+//         }
         
-        if(currFreq == maxFreq){
-            ans.push_back(root->val);
-        }
+//         if(currFreq == maxFreq){
+//             ans.push_back(root->val);
+//         }
         
-        dfs(root->right);
-    }
+//         dfs(root->right);
+//     }
     
-    vector<int> findMode(TreeNode* root) {
-        dfs(root);
+//     vector<int> findMode(TreeNode* root) {
+//         dfs(root);
         
-        return ans;
-    }
-};
+//         return ans;
+//     }
+// };
