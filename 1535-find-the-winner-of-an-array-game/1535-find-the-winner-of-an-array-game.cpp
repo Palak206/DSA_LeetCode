@@ -5,7 +5,8 @@ public:
         int curr_winner = arr[0];
         int win_count = 0;
         
-        // if(k == 1)
+        if(k == 1)
+            return max(arr[0] , arr[1]);
         
         if(k >= n)
             return *max_element(arr.begin() , arr.end());
