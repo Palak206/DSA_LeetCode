@@ -2,7 +2,7 @@ class Solution {
 public:
     int maxProductDifference(vector<int>& nums) {
         int n = nums.size();
-        int largest = 0, secondLarge = 0;
+        int largest = INT_MIN, secondLarge = INT_MIN;
         int smallest = INT_MAX, secondSmallest = INT_MAX;
         
     
