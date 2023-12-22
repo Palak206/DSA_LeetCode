@@ -14,11 +14,11 @@ public:
         int res = INT_MIN;
         
         for(int i=0 ; i<n-1 ; i++){
-            if(s[i] == '1'){
-                ones--;
+            if(s[i] == '0'){
+                zeros++;
             }
             else{
-                zeros++;
+                ones--;
             }
             res = max(res , zeros+ones);
         }
