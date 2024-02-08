@@ -34,6 +34,9 @@
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if(root==NULL) 
+            return NULL;
+        
         //if both the p and q is less than root vl then we can find our ans in root left
         if(p->val < root->val && q->val < root->val){
             return lowestCommonAncestor(root->left , p, q);
