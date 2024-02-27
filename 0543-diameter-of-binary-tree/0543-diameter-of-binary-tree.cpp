@@ -9,6 +9,7 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+// Diameter = lh+rh
 class Solution {
 public:
     int height(TreeNode* root, int &diameter){
