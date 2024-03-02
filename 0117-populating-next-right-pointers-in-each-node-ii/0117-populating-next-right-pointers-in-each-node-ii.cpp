@@ -16,6 +16,42 @@ public:
 };
 */
 
+// class Solution {
+// public:
+//     Node* connect(Node* root) {
+//         if(root == NULL) return NULL;
+//         queue<Node*> q;
+//         Node* curr = root;
+//         q.push(curr);
+        
+//         while(!q.empty()){
+//             int n = q.size();
+//             vector<Node*> v;
+            
+//             for(int i=0; i<n; i++){
+//                 curr = q.front();
+//                 q.pop();
+                
+//                 v.push_back(curr);
+                
+//                 if(curr->left)
+//                     q.push(curr->left);
+//                 if(curr->right)
+//                     q.push(curr->right);
+            
+//             }
+//             int j=0 ;
+//             for(j=0; j<v.size()-1; j++){
+//                 v[j]->next = v[j+1];
+//             }
+//             v[j] = NULL;
+            
+            
+//         }
+//         return root;
+//     }
+// };
+
 class Solution {
 public:
     Node* connect(Node* root) {
@@ -26,13 +62,16 @@ public:
         
         while(!q.empty()){
             int n = q.size();
-            vector<Node*> v;
             
-            for(int i=0; i<n; i++){
+            while(n--){
                 curr = q.front();
                 q.pop();
                 
-                v.push_back(curr);
+                if(n == 0)
+                    curr->next = NULL;
+                else
+                    curr->next = q.front();
+                
                 
                 if(curr->left)
                     q.push(curr->left);
@@ -40,14 +79,8 @@ public:
                     q.push(curr->right);
             
             }
-            int j=0 ;
-            for(j=0; j<v.size()-1; j++){
-                v[j]->next = v[j+1];
-            }
-            v[j] = NULL;
-            
-            
         }
         return root;
     }
 };
+
