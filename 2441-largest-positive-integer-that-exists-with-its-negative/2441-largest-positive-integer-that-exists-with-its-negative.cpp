@@ -13,26 +13,49 @@
 //     }
 // };
 
+// class Solution {
+// public:
+//     int findMaxK(vector<int>& nums) {        
+//         sort(nums.begin(), nums.end());
+        
+//         int i = 0;
+//         int j =nums.size()-1;
+        
+//         while(i<j){
+//             if((-nums[i]) == nums[j]){
+//                 return abs(nums[j]);
+//             }
+            
+//             else if((-nums[i]) > nums[j]){
+//                 i++;
+//             }
+//             else{
+//                 j--;
+//             }
+//         }
+//         return -1;
+//     }
+// };
+
+// T.C = O(N)
+
 class Solution {
 public:
     int findMaxK(vector<int>& nums) {        
-        sort(nums.begin(), nums.end());
+        unordered_set<int>st;
         
-        int i = 0;
-        int j =nums.size()-1;
+        for(int i=0; i<nums.size(); i++){
+            if(nums[i] < 0)
+                st.insert(nums[i]);
+        }
         
-        while(i<j){
-            if((-nums[i]) == nums[j]){
-                return abs(nums[j]);
-            }
-            
-            else if((-nums[i]) > nums[j]){
-                i++;
-            }
-            else{
-                j--;
+        int res = -1;
+        
+        for(int i=0; i<nums.size(); i++){
+            if(nums[i] > res && st.contains(-nums[i])){
+                res = nums[i];
             }
         }
-        return - 1;
+        return res;
     }
 };
